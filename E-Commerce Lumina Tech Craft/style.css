@@ -1,0 +1,396 @@
+/* ==========================================================================
+   RESET & DASAR
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0A0A0A;
+    color: #FFFFFF;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   1. NAVBAR (Sticky & Glassmorphism)
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect Warna Gold */
+.nav-links a:hover {
+    color: #D4AF37;
+}
+
+/* ==========================================================================
+   2. HERO SECTION (Bruno Simon 3D Interactive World Simulation)
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    background: radial-gradient(circle at center, #1e1b18 0%, #0A0A0A 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+/* Arena Canvas 3D Latar Belakang */
+.canvas-3d-simulation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    perspective: 800px;
+    z-index: 1;
+}
+
+/* Efek Grid Lantai Perspektif 3D */
+.ground-grid {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background-image: 
+        linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    transform: rotateX(60deg) translateY(-100px);
+    animation: moveGrid 20s linear infinite;
+}
+
+@keyframes moveGrid {
+    0% { transform: rotateX(60deg) translateY(0); }
+    100% { transform: rotateX(60deg) translateY(50px); }
+}
+
+/* Mobil Kecil (Simulasi Game Bruno Simon) */
+.car-avatar {
+    position: absolute;
+    bottom: 25%;
+    left: 20%;
+    width: 40px;
+    height: 24px;
+    background-color: #D4AF37;
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+    animation: carDrive 8s ease-in-out infinite alternate;
+}
+
+.car-body::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    right: 4px;
+    width: 8px;
+    height: 18px;
+    background-color: #0A0A0A;
+    border-radius: 2px;
+}
+
+/* Animasi Pergerakan Mobil */
+@keyframes carDrive {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    30% { transform: translate(120px, -40px) rotate(15deg); }
+    60% { transform: translate(250px, 30px) rotate(-10deg); }
+    100% { transform: translate(400px, -20px) rotate(5deg); }
+}
+
+/* Item Poin Diskon 3D Mengapung */
+.coin {
+    position: absolute;
+    background-color: rgba(212, 175, 55, 0.2);
+    border: 1px solid #D4AF37;
+    color: #D4AF37;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    animation: floatCoin 3s ease-in-out infinite alternate;
+}
+
+.coin-1 { top: 35%; left: 25%; animation-delay: 0s; }
+.coin-2 { top: 65%; right: 20%; animation-delay: 1.5s; }
+
+@keyframes floatCoin {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-12px); }
+}
+
+/* Hero Content di Atas Canvas Layer */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #FFFFFF;
+    line-height: 1.2;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #CCCCCC;
+    margin-bottom: 35px;
+    font-weight: 300;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Desain Tombol Target */
+.btn {
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: #D4AF37;
+    color: #0A0A0A;
+    position: relative;
+}
+
+.btn-target .target-label {
+    display: block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.btn-primary:hover {
+    background-color: #f1c40f;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-secondary {
+    background-color: rgba(10, 10, 10, 0.6);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(4px);
+}
+
+.btn-secondary:hover {
+    border-color: #D4AF37;
+    color: #D4AF37;
+    transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   3. PRODUCT SECTION (Grid Layout & Cards)
+   ========================================================================== */
+.products-section {
+    padding: 100px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.products-section h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: #FFFFFF;
+    position: relative;
+}
+
+/* Garis Hiasan di Bawah Judul */
+.products-section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #D4AF37;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Grid 3 Kolom */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* Card Produk Style */
+.product-card {
+    background-color: #1A1A1A;
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hover Card Naik ke Atas (Awwwards Style) */
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.4);
+}
+
+/* Badge Produk */
+.badge {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background-color: #D4AF37;
+    color: #0A0A0A;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 12px;
+    z-index: 10;
+}
+
+/* Placeholder Gambar */
+.image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #2A2A2A;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #888888;
+    font-size: 0.85rem;
+}
+
+.product-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #FFFFFF;
+}
+
+.product-card .price {
+    font-size: 1rem;
+    color: #D4AF37;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* Tombol Quick View */
+.btn-quick-view {
+    margin-top: auto;
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #D4AF37;
+    color: #D4AF37;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-quick-view:hover {
+    background-color: #D4AF37;
+    color: #0A0A0A;
+}
+
+/* ==========================================================================
+   4. RESPONSIVE DESIGN (Mobile & Tablet)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .products-section {
+        padding: 60px 20px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
